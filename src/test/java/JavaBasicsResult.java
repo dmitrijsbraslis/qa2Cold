@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-public class JavaBasics {
+public class JavaBasicsResult {
     private String text = "Sum is: ";
 
     @Test
