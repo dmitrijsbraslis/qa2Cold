@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DefiTestRu {
     private final By ARTICLE_TITLE = By.xpath(".//a[@class = 'top2012-title']");
@@ -21,5 +23,8 @@ public class DefiTestRu {
         WebElement article = browser.findElement(ARTICLE_TITLE);
         //Check if this is correct article
         Assertions.assertEquals(articleNameToCheck, article.getText(), "This is not true Article!");
+
+        WebDriverWait wait = new WebDriverWait(browser, 30);
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(ARTICLE_TITLE));
     }
 }

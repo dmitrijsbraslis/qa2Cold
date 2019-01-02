@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +28,15 @@ public class FirstFiveArticleTest {
         driver.manage().window().maximize();
         driver.get("http://delfi.lv");
 
-        //Find 5 elements
+                //Find 5 elements
         List<WebElement> articles = driver.findElements(ARTICLE_TITLE);
 
         //Parbaude
         for (int i = 0; i < 5; i++) {
             Assertions.assertEquals(givenArticles.get(i), articles.get(i).getText(), "Title Nr. " + (i+1) + " is not correct!");
         }
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(ARTICLE_TITLE));
     }
 }
